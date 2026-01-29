@@ -16,6 +16,7 @@ import {
 import Link from "next/link";
 import confetti from "canvas-confetti";
 import { useUser } from "~/hooks/auth";
+import { useModalStore } from "~/store/use-modal-store";
 
 function PurchaseSuccessPageInner() {
   const searchParams = useSearchParams();
@@ -26,6 +27,7 @@ function PurchaseSuccessPageInner() {
   const [currentBalance, setCurrentBalance] = useState<number>(0);
 
   const { data: user } = useUser();
+  const setSettingsOpen = useModalStore((s) => s.setSettingsOpen);
 
   useEffect(() => {
     const initPurchase = async () => {
@@ -115,7 +117,7 @@ function PurchaseSuccessPageInner() {
     }
 
     if (purchaseType === "credits") {
-      const creditAmount = quantity * 100;
+      const creditAmount = quantity * 50;
       return {
         title: "Credits Added Successfully!",
         subtitle: `+${creditAmount} credits`,
@@ -240,18 +242,17 @@ function PurchaseSuccessPageInner() {
           <div className="space-y-3">
             <Link href="/dashboard" className="block">
               <Button variant="default" className="w-full font-mono">
-                Go to Dashboard0
+                Go to Dashboard
               </Button>
             </Link>
             {purchaseType === "subscription" && (
-              <Link href="/pricing" className="block">
-                <Button
-                  variant="outline"
-                  className="border-border-default hover:border-border-strong w-full font-mono"
-                >
-                  View Subscription Details
-                </Button>
-              </Link>
+              <Button
+                variant="outline"
+                className="border-border-default hover:border-border-strong w-full font-mono"
+                onClick={() => setSettingsOpen(true)}
+              >
+                Manage Subscription
+              </Button>
             )}
           </div>
         </CardContent>

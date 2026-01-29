@@ -7,10 +7,68 @@ import type Stripe from "stripe";
 
 export const dynamic = "force-dynamic";
 
-// configuration
+// Configuration
 const CREDITS_PER_PACK = 50;
+const SUBSCRIPTION_CREDITS = 200;
 
-const processedEvents = new Set<string>();
+/**
+ * Sync subscription state from webhook event data
+ * Uses event data directly to avoid API calls and timeouts
+ */
+async function syncSubscription(
+  subscription: Stripe.Subscription,
+  eventId: string,
+) {
+  const customerId = subscription.customer as string;
+
+  const user = await db.query.users.findFirst({
+    where: eq(users.stripeCustomerId, customerId),
+  });
+
+  if (!user) {
+    console.error(
+      `[Stripe] User not found for customer ${customerId} | Event: ${eventId}`,
+    );
+    return;
+  }
+
+  // Get period end from subscription or first item
+  const periodEnd =
+    subscription.current_period_end ||
+    subscription.items?.data?.[0]?.current_period_end;
+
+  if (!periodEnd) {
+    console.log(
+      `[Stripe] Skipping - no period end for subscription ${subscription.id} | Event: ${eventId}`,
+    );
+    return;
+  }
+
+  // Determine if we should add credits (new billing period)
+  const shouldAddCredits =
+    subscription.status === "active" &&
+    (!user.stripeCurrentPeriodEnd ||
+      new Date(periodEnd * 1000).getTime() >
+        user.stripeCurrentPeriodEnd.getTime());
+
+  // Sync subscription state to database with transaction
+  await db
+    .update(users)
+    .set({
+      subscribed: subscription.status === "active",
+      stripeSubscriptionId: subscription.id,
+      stripePriceId: subscription.items.data[0]?.price.id ?? null,
+      stripeCurrentPeriodEnd: new Date(periodEnd * 1000),
+      ...(shouldAddCredits && {
+        creditBalance: user.creditBalance + SUBSCRIPTION_CREDITS,
+      }),
+    })
+    .where(eq(users.id, user.id));
+
+  console.log(
+    `[Stripe] Synced subscription for user ${user.id} | Status: ${subscription.status} | Credits: ${shouldAddCredits ? `+${SUBSCRIPTION_CREDITS}` : "0"} | Event: ${eventId}`,
+  );
+}
 
 export async function POST(req: Request) {
   const body = await req.text();
@@ -25,6 +83,7 @@ export async function POST(req: Request) {
       process.env.STRIPE_WEBHOOK_SECRET!,
     );
   } catch (error) {
+    console.error("[Stripe] Webhook signature verification failed:", error);
     return new Response(
       `Webhook Error: ${
         error instanceof Error ? error.message : "Unknown error"
@@ -33,72 +92,16 @@ export async function POST(req: Request) {
     );
   }
 
-  if (processedEvents.has(event.id)) {
-    console.log(`Event ${event.id} already processed, skipping`);
-    return new Response(null, { status: 200 });
-  }
-
-  const session = event.data.object as
-    | Stripe.Checkout.Session
-    | Stripe.Subscription;
+  console.log(`[Stripe] Processing event ${event.id} | Type: ${event.type}`);
 
   try {
     switch (event.type) {
-      // subscription creation
+      // All subscription events use unified sync function
       case "customer.subscription.created":
-        const createSubscription = event.data.object as Stripe.Subscription;
-        const createCustomerId = createSubscription.customer as string;
-
-        const user = await db.query.users.findFirst({
-          where: eq(users.stripeCustomerId, createCustomerId),
-        });
-
-        await db
-          .update(users)
-          .set({
-            subscribed: true,
-            creditBalance: (user?.creditBalance ?? 0) + 200,
-            stripeSubscriptionId: createSubscription.id,
-            stripePriceId: createSubscription.items.data[0].price.id,
-            stripeCurrentPeriodEnd: new Date(
-              createSubscription.current_period_end * 1000,
-            ),
-          })
-          .where(eq(users.stripeCustomerId, createCustomerId));
-        break;
-
-      // subscription updates
       case "customer.subscription.updated":
-        const updateSubscription = event.data.object as Stripe.Subscription;
-        const updateCustomerId = updateSubscription.customer as string;
-
-        await db
-          .update(users)
-          .set({
-            subscribed: updateSubscription.status === "active",
-            stripeSubscriptionId: updateSubscription.id,
-            stripePriceId: updateSubscription.items.data[0].price.id,
-            stripeCurrentPeriodEnd: new Date(
-              updateSubscription.current_period_end * 1000,
-            ),
-            creditBalance: (user?.creditBalance ?? 0) + 200,
-          })
-          .where(eq(users.stripeCustomerId, updateCustomerId));
-        break;
-
-      // subscription deletions/cancellations
       case "customer.subscription.deleted":
-        const deleteSubscription = event.data.object as Stripe.Subscription;
-        const deleteCustomerId = deleteSubscription.customer as string;
-
-        await db
-          .update(users)
-          .set({
-            subscribed: false,
-            stripeSubscriptionId: null,
-            stripePriceId: null,
-          })
-          .where(eq(users.stripeCustomerId, deleteCustomerId));
+        const subscription = event.data.object as Stripe.Subscription;
+        await syncSubscription(subscription, event.id);
         break;
 
       // checkout session completion for credit pack purchase
@@ -134,23 +137,22 @@ export async function POST(req: Request) {
                 .where(eq(users.stripeCustomerId, customerId));
 
               console.log(
-                `Added ${creditsToAdd} credits (${quantity} packs × ${CREDITS_PER_PACK} credits) to user ${user.id} for event ${event.id}`,
+                `[Stripe] Added ${creditsToAdd} credits (${quantity} packs × ${CREDITS_PER_PACK}) to user ${user.id} | Event: ${event.id}`,
+              );
+            } else {
+              console.error(
+                `[Stripe] User not found for customer ${customerId} | Event: ${event.id}`,
               );
             }
           }
         }
         break;
     }
-
-    processedEvents.add(event.id);
-
-    if (processedEvents.size > 1000) {
-      const eventArray = Array.from(processedEvents);
-      processedEvents.clear();
-      eventArray.slice(-500).forEach((id) => processedEvents.add(id));
-    }
   } catch (error) {
-    console.error(`Error processing webhook event ${event.id}:`, error);
+    console.error(
+      `[Stripe] Error processing event ${event.id} (${event.type}):`,
+      error,
+    );
     return new Response(
       `Error processing webhook: ${
         error instanceof Error ? error.message : "Unknown error"
