@@ -290,7 +290,7 @@ export default function AddNodeDialog({
           <CommandItem
             onSelect={() => {
               onAddNode("resultNode", {
-                src: "https://cwp8pb7l7rzz6iyv.public.blob.vercel-storage.com/rough-stamp.png",
+                src: "https://ld7ow2jjnhzheior.public.blob.vercel-storage.com/rough-stamp.png",
                 label: "Result",
               });
               onOpenChange(false);

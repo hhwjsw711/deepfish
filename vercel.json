@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/assets/(.*)",
-      "destination": "https://cwp8pb7l7rzz6iyv.public.blob.vercel-storage.com/$1"
+      "destination": "https://ld7ow2jjnhzheior.public.blob.vercel-storage.com/$1"
     }
   ]
 }

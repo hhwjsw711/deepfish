@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   });
 
   const redirectedThumbnail = flow?.thumbnail?.startsWith(
-    "https://app.deepfi.sh",
+    "https://app.voidream.com",
   )
     ? flow.thumbnail.replace("https://app.", "https://")
     : flow?.thumbnail;
@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       images: [redirectedThumbnail ?? "/app-icon.png"],
       siteName: "DeepFish AI",
       locale: "en_US",
-      url: `https://deepfi.sh/composer/${id[0]}`,
+      url: `https://voidream.com/composer/${id[0]}`,
     },
     twitter: {
       card: "summary_large_image",

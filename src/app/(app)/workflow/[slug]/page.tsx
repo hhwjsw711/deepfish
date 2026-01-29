@@ -43,7 +43,7 @@ export async function generateMetadata({
     const { title, description, avatar } = workflow.data;
     const { keywords, pageTitle } = workflow;
     const workflowImage = avatar?.startsWith("/")
-      ? `https://deepfi.sh${avatar}`
+      ? `https://voidream.com${avatar}`
       : avatar;
 
     return {

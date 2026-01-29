@@ -2,4 +2,4 @@ User-Agent: *
 Allow: /
 Disallow: /private/
 
-Sitemap: https://deepfi.sh/sitemap.xml
+Sitemap: https://voidream.com/sitemap.xml

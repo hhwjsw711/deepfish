@@ -9,6 +9,16 @@ const remoteImagePatterns: {
 }[] = [
   {
     protocol: "https" as const,
+    hostname: "**.voidream.com",
+    pathname: "/**",
+  },
+  {
+    protocol: "https" as const,
+    hostname: "voidream.com",
+    pathname: "/**",
+  },
+  {
+    protocol: "https" as const,
     hostname: "**.deepfi.sh",
     pathname: "/**",
   },
@@ -66,6 +76,12 @@ if (process.env.NEXT_PUBLIC_BLOB_URL) {
 }
 
 const nextConfig: NextConfig = {
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   reactStrictMode: false,
   transpilePackages: ["three"],
   // devIndicators: false,

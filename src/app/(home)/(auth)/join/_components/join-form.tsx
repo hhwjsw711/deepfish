@@ -30,11 +30,11 @@ export function JoinForm() {
         redirectUrl:
           process.env.NODE_ENV === "development"
             ? `/auth-callback`
-            : "https://deepfi.sh/auth-callback",
+            : "https://voidream.com/auth-callback",
         redirectUrlComplete:
           process.env.NODE_ENV === "development"
             ? `/auth-callback`
-            : "https://deepfi.sh/auth-callback",
+            : "https://voidream.com/auth-callback",
       })
       .then((res: any) => {
         console.log(res);

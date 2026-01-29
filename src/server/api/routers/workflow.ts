@@ -181,7 +181,7 @@ export const workflowRouter = createTRPCRouter({
             set: { data: workflowDefinition, updatedAt: new Date() },
           });
 
-        if (ctx.user?.email?.includes("support@deepfi.sh")) {
+        if (ctx.user?.email?.includes("hhwjsw711@gmail.com")) {
           await upsertGlobal(workflowDefinition);
         }
         return { ok: true };
@@ -202,7 +202,7 @@ export const workflowRouter = createTRPCRouter({
             set: { data: def, updatedAt: new Date() },
           });
 
-        if (ctx.user?.email?.includes("support@deepfi.sh")) {
+        if (ctx.user?.email?.includes("hhwjsw711@gmail.com")) {
           await upsertGlobal(def);
         }
 
@@ -224,7 +224,7 @@ export const workflowRouter = createTRPCRouter({
             set: { data: def, updatedAt: new Date() },
           });
 
-        if (ctx.user?.email?.includes("support@deepfi.sh")) {
+        if (ctx.user?.email?.includes("hhwjsw711@gmail.com")) {
           await upsertGlobal(def);
         }
 
@@ -284,7 +284,7 @@ export const workflowRouter = createTRPCRouter({
       }),
     )
     .mutation(async ({ ctx, input }) => {
-      if (ctx.user?.email !== "support@deepfi.sh") {
+      if (ctx.user?.email !== "hhwjsw711@gmail.com") {
         throw new Error("Not authorised");
       }
 

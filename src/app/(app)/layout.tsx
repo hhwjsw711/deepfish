@@ -62,7 +62,7 @@ export const metadata: Metadata = {
     images: ["/app-icon.png"],
     siteName: "DeepFish AI",
     locale: "en_US",
-    url: "https://deepfi.sh",
+    url: "https://voidream.com",
   },
   twitter: {
     card: "summary_large_image",

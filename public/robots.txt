@@ -10,4 +10,4 @@ Disallow: /purchase-result
 Crawl-delay: 1
 
 # Sitemap location
-Sitemap: https://deepfi.sh/sitemap.xml
+Sitemap: https://voidream.com/sitemap.xml

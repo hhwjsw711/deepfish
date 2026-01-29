@@ -45,13 +45,14 @@ export const stripeRouter = createTRPCRouter({
         const checkoutSession = await stripe.checkout.sessions.create({
           customer: customerId,
           mode: "subscription",
-          payment_method_types: ["card"],
+          payment_method_types: ["card", "alipay"],
           line_items: [
             {
               price: input.priceId,
               quantity: 1,
             },
           ],
+          allow_promotion_codes: true,
           success_url: `${process.env.NEXT_PUBLIC_DESKTOP_APP_URL}/purchase-result?type=subscription`,
           cancel_url: `${process.env.NEXT_PUBLIC_DESKTOP_APP_URL}/purchase-result?canceled=true`,
           metadata: {
@@ -110,13 +111,19 @@ export const stripeRouter = createTRPCRouter({
         const checkoutSession = await stripe.checkout.sessions.create({
           customer: customerId,
           mode: "payment",
-          payment_method_types: ["card"],
+          payment_method_types: ["card", "alipay", "wechat_pay"],
+          payment_method_options: {
+            wechat_pay: {
+              client: "web",
+            },
+          },
           line_items: [
             {
               price: input.priceId,
               quantity: input.quantity,
             },
           ],
+          allow_promotion_codes: true,
           success_url: `${process.env.NEXT_PUBLIC_DESKTOP_APP_URL}/purchase-result?type=credits&quantity=${input.quantity}&currentBalance=${ctx.user.creditBalance}`,
           cancel_url: `${process.env.NEXT_PUBLIC_DESKTOP_APP_URL}/purchase-result?canceled=true`,
           metadata: {

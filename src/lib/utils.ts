@@ -242,8 +242,8 @@ export const gridCols =
 
 export async function downloadFile(url: string) {
   try {
-    if (url.includes("app.deepfi.sh")) {
-      url = url.replace("app.deepfi.sh", "deepfi.sh");
+    if (url.includes("app.voidream.com")) {
+      url = url.replace("app.voidream.com", "voidream.com");
     }
     // Replace blob URL with asset URL if needed
     if (url.includes(process.env.NEXT_PUBLIC_BLOB_URL!)) {

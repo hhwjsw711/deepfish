@@ -3,7 +3,7 @@ import { MetadataRoute } from "next";
 import { staticServerApi } from "~/lib/trpc/server-client";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = "https://deepfi.sh";
+  const baseUrl = "https://voidream.com";
   const currentDate = new Date();
 
   // Static pages

@@ -11,7 +11,7 @@ const jetbrainsMono = localFont({
   preload: true,
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://deepfi.sh";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://voidream.com";
 
 export const metadata: Metadata = {
   title: {

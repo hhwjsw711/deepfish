@@ -38,7 +38,7 @@ const WALKTHROUGH_SLIDES = [
     content:
       "Your all-in-one platform to build, run, and explore the latest in generative AI workflows.",
     type: "image",
-    url: "https://cwp8pb7l7rzz6iyv.public.blob.vercel-storage.com/tmp3efddtbr-ICMdjMoolFe72vkKfP12SItDF4iYml.png",
+    url: "https://ld7ow2jjnhzheior.public.blob.vercel-storage.com/tmp3efddtbr-ICMdjMoolFe72vkKfP12SItDF4iYml.png",
   },
   {
     title: "What is Deep Fish?",

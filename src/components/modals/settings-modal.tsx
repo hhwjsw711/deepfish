@@ -117,12 +117,12 @@ export default function SettingsModal() {
 
   const subscriptionPriceId =
     process.env.NODE_ENV === "production"
-      ? "price_1RWnLlInwFcDVnE4IsIi18sj"
-      : "price_1RYAkOInwFcDVnE4yxXSK0wa";
+      ? "price_1SZO8p5K56WMmIV25IIsIXNn"
+      : "price_1SZO5n8YUQ65JXfntzX6Kn0U";
   const oneTimePriceId =
     process.env.NODE_ENV === "production"
-      ? "price_1RYA9PInwFcDVnE4XLakZP90"
-      : "price_1RYAkdInwFcDVnE4l4HA0RIo";
+      ? "price_1SZNeo5K56WMmIV26AZAKTId"
+      : "price_1SZNkR8YUQ65JXfnjYn3Bbeo";
 
   const handleGiftClick = () => {
     console.log("Gift button clicked");

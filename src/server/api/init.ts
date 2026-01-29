@@ -138,7 +138,7 @@ const isBeta = t.middleware(async ({ ctx, next }) => {
   if (!user.beta) {
     throw new TRPCError({
       code: "FORBIDDEN",
-      message: "Beta access required. Please join the waitlist at deepfi.sh",
+      message: "Beta access required. Please join the waitlist at voidream.com",
     });
   }
 
