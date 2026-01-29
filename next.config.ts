@@ -94,6 +94,7 @@ const nextConfig: NextConfig = {
    */
   images: {
     remotePatterns: remoteImagePatterns,
+    unoptimized: true,
   },
   // This is required to support PostHog trailing slash API requests
   skipTrailingSlashRedirect: true,

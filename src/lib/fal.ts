@@ -285,8 +285,45 @@ async function uploadSingleOutputToStorage(
       }
     }
 
+    // Determine file extension from content type
+    let extension = "bin";
+    switch (contentType) {
+      case "image/png":
+        extension = "png";
+        break;
+      case "image/jpeg":
+      case "image/jpg":
+        extension = "jpg";
+        break;
+      case "image/gif":
+        extension = "gif";
+        break;
+      case "image/webp":
+        extension = "webp";
+        break;
+      case "video/mp4":
+        extension = "mp4";
+        break;
+      case "video/webm":
+        extension = "webm";
+        break;
+      case "audio/mpeg":
+      case "audio/mp3":
+        extension = "mp3";
+        break;
+      case "audio/wav":
+        extension = "wav";
+        break;
+      case "audio/ogg":
+        extension = "ogg";
+        break;
+      case "model/gltf-binary":
+        extension = "glb";
+        break;
+    }
+
     // Upload blob directly to Vercel Blob
-    const fileName = `${workflowName}-${Date.now()}`;
+    const fileName = `${workflowName}-${Date.now()}.${extension}`;
     const put = await uploadToBlob(fileName, blob, {
       access: "public",
       handleUploadUrl: "/api/blob/upload",
