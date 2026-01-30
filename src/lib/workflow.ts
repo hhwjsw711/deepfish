@@ -36,7 +36,7 @@ export async function checkCachedRun(
   runId?: number;
   completedAt?: Date | null;
 }> {
-  return await vanillaApi.workflow.checkCachedRun.query({
+  return await vanillaApi.workflow.checkCachedRun.mutate({
     workflowId,
     inputs,
   });

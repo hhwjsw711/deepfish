@@ -448,7 +448,7 @@ export const workflowRouter = createTRPCRouter({
         inputs: z.record(z.any()),
       }),
     )
-    .query(async ({ ctx, input }) => {
+    .mutation(async ({ ctx, input }) => {
       // Generate the same hash as in addRun
       const crypto = await import("crypto");
       const serializedInputs = JSON.stringify({
