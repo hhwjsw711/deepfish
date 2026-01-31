@@ -30,7 +30,7 @@ export function UserButton() {
           router.push("/join");
         }}
         className="no-drag flex h-6 flex-row items-center gap-1 border border-yellow-500/40 bg-yellow-500/20 px-3 py-1 font-mono text-xs text-yellow-300 transition hover:bg-yellow-500/40"
-        title="Sign in to DeepFish"
+        title="Sign in to Voidream"
       >
         <svg
           className="mr-1"

@@ -47,14 +47,14 @@ export async function generateMetadata({
       : avatar;
 
     return {
-      title: pageTitle || `${title} - AI Generator | DeepFish`,
+      title: pageTitle || `${title} - AI Generator | Voidream`,
       description:
         description ||
-        `Generate amazing content with ${title} on DeepFish. Free to start, no credit card required.`,
+        `Generate amazing content with ${title} on Voidream. Free to start, no credit card required.`,
       keywords: keywords.split(", "),
       openGraph: {
         title: pageTitle || `${title} - AI Workflow`,
-        description: description || `Run ${title} AI workflow on DeepFish`,
+        description: description || `Run ${title} AI workflow on Voidream`,
         images: [
           {
             url: workflowImage,
@@ -64,14 +64,14 @@ export async function generateMetadata({
           },
         ],
         type: "website",
-        siteName: "DeepFish",
+        siteName: "Voidream",
       },
       twitter: {
         card: "summary_large_image",
         title: pageTitle || `${title} - AI Workflow`,
-        description: description || `Run ${title} AI workflow on DeepFish`,
+        description: description || `Run ${title} AI workflow on Voidream`,
         images: [workflowImage],
-        creator: "@deepfishlol",
+        creator: "@voidreamlol",
       },
       robots: {
         index: true,
@@ -88,8 +88,8 @@ export async function generateMetadata({
   } catch (error) {
     console.error("Failed to generate metadata for workflow:", error);
     return {
-      title: "AI Workflow | DeepFish",
-      description: "Run AI workflows on DeepFish",
+      title: "AI Workflow | Voidream",
+      description: "Run AI workflows on Voidream",
     };
   }
 }

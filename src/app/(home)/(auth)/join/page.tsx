@@ -7,7 +7,7 @@ export default function JoinPage() {
     <div className="flex min-h-screen items-center justify-center bg-black">
       <div className="w-full max-w-md p-8">
         <h1 className="mb-6 text-center font-mono text-2xl font-bold text-white">
-          JOIN DEEPFISH AI
+          JOIN VOIDREAM
         </h1>
         <JoinForm />
       </div>

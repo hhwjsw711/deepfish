@@ -24,7 +24,7 @@ export default function JoinModal() {
       <DialogContent className="border-border-default rounded-none bg-black sm:max-w-md">
         <DialogHeader>
           <DialogTitle className="font-mono text-white">
-            JOIN DEEPFISH AI
+            JOIN VOIDREAM
           </DialogTitle>
         </DialogHeader>
         <JoinForm />

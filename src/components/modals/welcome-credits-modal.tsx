@@ -55,7 +55,7 @@ export default function WelcomeCreditsModal({
             <div className="flex items-center gap-2">
               <Terminal size={14} className="text-white" />
               <span className="font-mono text-xs text-white">
-                DEEPFISH_WELCOME_BONUS
+                VOIDREAM_WELCOME_BONUS
               </span>
               <div className="text-xs text-red-500">[NEW]</div>
             </div>
@@ -85,7 +85,7 @@ export default function WelcomeCreditsModal({
                   2 free credits
                 </span>
                 ! Use these credits to explore our AI workflows and see what
-                Deep Fish can do.
+                Voidream can do.
               </p>
             </div>
 

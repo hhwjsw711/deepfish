@@ -104,7 +104,7 @@ function PurchaseSuccessPageInner() {
     if (purchaseType === "subscription") {
       return {
         icon: <Crown className="h-16 w-16 text-yellow-400" />,
-        title: "Welcome to DeepFish PRO!",
+        title: "Welcome to Voidream PRO!",
         subtitle: "Your subscription is now active",
         description: "You now have unlimited access to all features",
         features: [

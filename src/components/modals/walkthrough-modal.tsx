@@ -34,37 +34,37 @@ const COMPOSER_COMMANDS = [
 
 const WALKTHROUGH_SLIDES = [
   {
-    title: "Welcome to Deep Fish",
+    title: "Welcome to Voidream",
     content:
       "Your all-in-one platform to build, run, and explore the latest in generative AI workflows.",
     type: "image",
     url: "https://ld7ow2jjnhzheior.public.blob.vercel-storage.com/tmp3efddtbr-ICMdjMoolFe72vkKfP12SItDF4iYml.png",
   },
   {
-    title: "What is Deep Fish?",
+    title: "What is Voidream?",
     content:
-      "DeepFish brings together AI infrastructure from Fal and Replicate, providing you with seamless access to powerful workflows and AI applications—all within a single, unified platform.",
+      "Voidream brings together AI infrastructure from Fal and Replicate, providing you with seamless access to powerful workflows and AI applications—all within a single, unified platform.",
     type: "component",
     component: "deepfish-illustration",
   },
   {
     title: "Import from Anywhere",
     content:
-      "Add workflows instantly. Paste a Fal or Replicate link, or upload a ComfyUI JSON file. Deep Fish handles the rest, giving you a unified workflow library.",
+      "Add workflows instantly. Paste a Fal or Replicate link, or upload a ComfyUI JSON file. Voidream handles the rest, giving you a unified workflow library.",
     type: "component",
     component: "workflow-import",
   },
   {
     title: "Flows",
     content:
-      "Flows are what make DeepFish unique. They let you build AI workflows by combining multiple smaller workflows together.",
+      "Flows are what make Voidream unique. They let you build AI workflows by combining multiple smaller workflows together.",
     type: "component",
     component: "flow-illustration",
   },
   {
     title: "Workflows",
     content:
-      "Add workflows from Fal or Replicate with just a link, and run any of DeepFish's featured workflows with a click of a button.",
+      "Add workflows from Fal or Replicate with just a link, and run any of Voidream's featured workflows with a click of a button.",
     type: "video",
     url: "/deepfishworkflows.mp4",
     hasCommands: true,
@@ -132,7 +132,7 @@ export default function WalkthroughModal({ open }: WalkthroughModalProps) {
               <div className="flex items-center gap-2">
                 <Terminal size={14} className="text-white" />
                 <span className="font-mono text-xs text-white">
-                  DEEPFISH_WALKTHROUGH
+                  VOIDREAM_WALKTHROUGH
                 </span>
                 <div className="text-xs text-red-500">[BETA]</div>
               </div>

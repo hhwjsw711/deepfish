@@ -42,11 +42,11 @@ export async function generateMetadata({
         : "Anonymous";
 
     return {
-      title: `${displayName} | DeepFish AI`,
-      description: `View ${displayName}'s profile, flows, and workflows on DeepFish`,
+      title: `${displayName} | Voidream`,
+      description: `View ${displayName}'s profile, flows, and workflows on Voidream`,
       openGraph: {
-        title: `${displayName} | DeepFish AI`,
-        description: `View ${displayName}'s profile, flows, and workflows on DeepFish`,
+        title: `${displayName} | Voidream`,
+        description: `View ${displayName}'s profile, flows, and workflows on Voidream`,
         images: [
           {
             url: user.imageUrl || "/yumemonos/1.png",
@@ -56,21 +56,21 @@ export async function generateMetadata({
           },
         ],
         type: "profile",
-        siteName: "DeepFish AI",
+        siteName: "Voidream",
       },
       twitter: {
         card: "summary",
-        title: `${displayName} | DeepFish AI`,
-        description: `View ${displayName}'s profile on DeepFish AI`,
+        title: `${displayName} | Voidream`,
+        description: `View ${displayName}'s profile on Voidream`,
         images: [user.imageUrl || "/yumemonos/1.png"],
-        creator: "@deepfishlol",
+        creator: "@voidreamlol",
       },
     };
   } catch (error) {
     console.error("Failed to generate metadata for user:", error);
     return {
-      title: "User Profile | DeepFish",
-      description: "View user profile on DeepFish",
+      title: "User Profile | Voidream",
+      description: "View user profile on Voidream",
     };
   }
 }

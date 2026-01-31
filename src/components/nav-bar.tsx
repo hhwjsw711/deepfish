@@ -27,7 +27,7 @@ export function NavBar() {
         <div className="flex h-16 items-center justify-between gap-4">
           <Link href="/" className="flex shrink-0 items-center space-x-2">
             <span className="font-mono text-lg font-bold tracking-wider text-white">
-              DEEPFISH
+              VOIDREAM
             </span>
           </Link>
         </div>

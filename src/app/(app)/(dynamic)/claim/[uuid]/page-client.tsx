@@ -145,7 +145,7 @@ export default function ClaimGiftClient({ gift }: ClaimGiftClientProps) {
               className="w-full border border-blue-500/30 bg-blue-500/20 font-mono text-blue-400 hover:bg-blue-500/30"
             >
               <Home className="mr-2 h-4 w-4" />
-              Go to DeepFish
+              Go to Voidream
             </Button>
           </CardContent>
         </Card>

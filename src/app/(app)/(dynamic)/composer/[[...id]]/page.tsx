@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: flow?.name,
       type: "website",
       images: [redirectedThumbnail ?? "/app-icon.png"],
-      siteName: "DeepFish AI",
+      siteName: "Voidream",
       locale: "en_US",
       url: `https://voidream.com/composer/${id[0]}`,
     },
@@ -42,8 +42,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: flow?.name,
       description:
         "Create anime, manga, realistic images & videos with FLUX, Google Veo 3, HiDream & more. Visual workflow composer.",
-      site: "@deepfishlol",
-      creator: "@deepfishlol",
+      site: "@voidreamlol",
+      creator: "@voidreamlol",
       images: [redirectedThumbnail ?? "/app-icon.png"],
     },
   };

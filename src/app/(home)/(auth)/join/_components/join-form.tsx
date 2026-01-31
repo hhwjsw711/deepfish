@@ -162,7 +162,7 @@ export function JoinForm() {
                     <FormControl>
                       <Input
                         {...field}
-                        placeholder="user@deepfish.ai"
+                        placeholder="user@voidream.com"
                         className="border-border-default rounded-none border bg-black px-3 py-2 font-mono text-white focus:ring-1 focus:ring-white focus:outline-none"
                       />
                     </FormControl>

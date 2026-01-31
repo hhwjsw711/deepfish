@@ -14,7 +14,7 @@ export default function DeepFishIllustration() {
       setTimeout(() => setStep(3), gap * 3), // Show ComfyUI
       setTimeout(() => setStep(4), gap * 4), // Show AI Apps
       setTimeout(() => setStep(5), gap * 5), // Show Border
-      setTimeout(() => setStep(6), gap * 6), // Show Blue Overlay & DeepFish
+      setTimeout(() => setStep(6), gap * 6), // Show Blue Overlay & Voidream
     ];
 
     return () => timers.forEach(clearTimeout);
@@ -109,7 +109,7 @@ export default function DeepFishIllustration() {
             step >= 6 ? "opacity-100" : "opacity-0"
           }`}
         >
-          <Image width={50} height={50} alt="deep fish" src={"/app-icon.png"} />
+          <Image width={50} height={50} alt="Voidream" src={"/app-icon.png"} />
         </div>
       </div>
     </div>

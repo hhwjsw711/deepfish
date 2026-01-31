@@ -20,11 +20,11 @@ import { unstable_cache } from "next/cache";
 export const metadata: Metadata = {
   title: {
     default:
-      "DeepFish AI - Generative AI Platform | FLUX, Veo 3, HiDream & 100+ Models",
-    template: "%s | DeepFish AI - Generative AI Platform",
+      "Voidream - Generative AI Platform | FLUX, Veo 3, HiDream & 100+ Models",
+    template: "%s | Voidream - Generative AI Platform",
   },
   description:
-    "DeepFish AI - Professional generative AI platform for creating stunning images, videos, and 3D content. Use FLUX, Google Veo 3, HiDream, GPT-Image-1, anime models like Illustrious XL, and 100+ cutting-edge AI models. No-code visual workflow composer.",
+    "Voidream - Professional generative AI platform for creating stunning images, videos, and 3D content. Use FLUX, Google Veo 3, HiDream, GPT-Image-1, anime models like Illustrious XL, and 100+ cutting-edge AI models. No-code visual workflow composer.",
   keywords: [
     "anime character generator",
     "waifu generator",
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   appleWebApp: {
     capable: true,
     statusBarStyle: "black",
-    title: "DeepFish",
+    title: "Voidream",
   },
   icons: {
     icon: "/app-icon.png",
@@ -53,14 +53,14 @@ export const metadata: Metadata = {
   openGraph: {
     title: {
       default:
-        "DeepFish AI - Generative AI Platform | FLUX, Veo 3, HiDream & 100+ Models",
-      template: "%s | DeepFish AI - Generative AI Platform",
+        "Voidream - Generative AI Platform | FLUX, Veo 3, HiDream & 100+ Models",
+      template: "%s | Voidream - Generative AI Platform",
     },
     description:
       "Professional generative AI platform. Create stunning AI-generated images, videos & 3D content with FLUX, Google Veo 3, HiDream, anime models and 100+ cutting-edge AI models. No coding required.",
     type: "website",
     images: ["/app-icon.png"],
-    siteName: "DeepFish AI",
+    siteName: "Voidream",
     locale: "en_US",
     url: "https://voidream.com",
   },
@@ -68,13 +68,13 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: {
       default:
-        "DeepFish AI - Generative AI Platform | FLUX, Veo 3, HiDream & 100+ Models",
-      template: "%s | DeepFish AI - Generative AI Platform",
+        "Voidream - Generative AI Platform | FLUX, Veo 3, HiDream & 100+ Models",
+      template: "%s | Voidream - Generative AI Platform",
     },
     description:
       "Create anime, manga, realistic images & videos with FLUX, Google Veo 3, HiDream & more. Visual workflow composer.",
-    site: "@deepfishlol",
-    creator: "@deepfishlol",
+    site: "@voidreamlol",
+    creator: "@voidreamlol",
     images: ["/app-icon.png"],
   },
   robots: {
